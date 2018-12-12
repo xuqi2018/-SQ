@@ -7,7 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    result: "暂无结果",
+    formula: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -49,6 +51,27 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  //事件处理函数
+  calculate: function () {
+    wx.request({
+      url: 'http://10.0.0.59:8000/calculate',
+      data: {
+        formula: this.data.formula
+      },
+      success: res => {
+        if (res.statusCode == 200) {
+          this.setData({
+            result: res.data
+          })
+        }
+      }
+    })
+  },
+  input: function (e) {
+    this.setData({
+      formula: e.detail.value
     })
   }
 })
