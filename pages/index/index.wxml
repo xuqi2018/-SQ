@@ -3,4 +3,7 @@
   <view class="container">
     <button bindtap="login">login</button>
   </view>
+  <view>
+    <button wx:if="{hasUserInfo}" opne-type="toMainStage" bindtap="toMainStage">页面跳转</button>
+  </view>
 </view>
