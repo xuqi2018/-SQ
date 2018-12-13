@@ -7,7 +7,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
+  <view class="usermotto">  
     <text class="user-motto">{{motto}}</text>
+  </view>
+  <view>
+    <button wx:if="{hasUserInfo}" opne-type="toMainStage" bindtap="toMainStage">页面跳转</button>
   </view>
 </view>

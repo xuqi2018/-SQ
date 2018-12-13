@@ -1,7 +1,19 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/answerPage/answerPage",
+    "pages/askQuestion/askQuestion",
+    "pages/blackList/blackList",
+    "pages/login/login",
+    "pages/mainStage/mainStage",
+    "pages/message/message",
+    "pages/myFollow/myFollow",
+    "pages/myInfo/myInfo",
+    "pages/myQandA/myQandA",
+    "pages/questionPage/questionPage",
+    "pages/reviewPage/reviewPage",
+    "pages/userInfo/userInfo"
   ],
   "window":{
     "backgroundTextStyle":"light",

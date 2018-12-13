@@ -50,5 +50,12 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  toMainStage: function(e){
+    //console.log(getCurrentPages()[0].route)
+    wx.navigateTo({
+      url:'../mainStage/mainStage'
+    })
   }
 })
