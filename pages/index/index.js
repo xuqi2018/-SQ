@@ -39,9 +39,8 @@ Page({
   },
 
   toMainStage: function(e){
-    //console.log(getCurrentPages()[0].route)
-    wx.navigateTo({
-      url:'../mainStage/mainStage'
+    wx.switchTab({
+      url: '../mainStage/mainStage',
     })
   }
 })

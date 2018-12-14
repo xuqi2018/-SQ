@@ -5,7 +5,6 @@
     "pages/answerPage/answerPage",
     "pages/askQuestion/askQuestion",
     "pages/blackList/blackList",
-    "pages/login/login",
     "pages/mainStage/mainStage",
     "pages/message/message",
     "pages/myFollow/myFollow",
@@ -20,5 +19,45 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "position":"bottom",
+    "color": "#626567",
+    "selectedColor": "#2A8CE5",
+    "backgroundColor": "#FBFBFB",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/mainStage/mainStage",
+        "text": "首页",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "动态",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/myQandA/myQandA",
+        "text": "我的问答",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/myFollow/myFollow",
+        "text": "我的关注",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/myInfo/myInfo",
+        "text": "个人资料",
+        "iconPath": "",
+        "selectedIconPath": ""
+      }
+    ]
   }
+  
 }

@@ -61,5 +61,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  upper: function () {
+    wx.showNavigationBarLoading()
+    //this.refresh();
+    console.log("upper");
+    setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
+  },
+  lower: function(e){
+    wx.showNavigationBarLoading();
+    var that = this;
+    //setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
+    console.log("lower")
   }
 })

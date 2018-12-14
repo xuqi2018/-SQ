@@ -1,0 +1,19 @@
+<!--mainStage.wxml-->
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="" scroll-top="}">
+  <block wx:for="" wx:for-index="" wx:for-item="" data-idx="">
+    <view class="item">
+      <view class="feed-source">
+      </view>
+      <view class="feed-content">
+        <view class="question">
+        </view>
+        <view class="answer">
+          <view class="answer-body">
+          </view>
+          <view class="answer-actions">
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
