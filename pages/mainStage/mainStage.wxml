@@ -1,16 +1,31 @@
 <!--mainStage.wxml-->
 <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="" scroll-top="}">
-  <block wx:for="" wx:for-index="" wx:for-item="" data-idx="">
-    <view class="item">
+  <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+    <view class="feed-item">
       <view class="feed-source">
+        <a class="">
+          <text>{{item.feed_source_name}}{{item.feed_source_txt}}</text>
+        </a>
       </view>
       <view class="feed-content">
-        <view class="question">
+        <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+          <a class="question-link">
+            <text>{{item.question}}</text>
+          </a>
         </view>
         <view class="answer">
           <view class="answer-body">
+            <view bindtap="bindItemTap">
+              <text class="answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+            </view>
           </view>
-          <view class="answer-actions">
+          <view class="answer-actions" bindtap="bindItemTap">
+            <view class="comments dot">
+              <a>{{item.comment_num}} 评论 </a>
+            </view>
+            <view class="follow-it">
+              <a>关注问题</a>
+            </view>
           </view>
         </view>
       </view>
