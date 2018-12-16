@@ -1,0 +1,14 @@
+<view class="detail-view">
+	<view class="avatar-view">
+		<image class="avatar" mode="widthFix" src="{{ user.avatar_url }}"/>
+	</view>
+	<view class="basic">
+		<text class="nickname">{{ user.nickname }}</text>
+		<text class="email">{{ user.email || "" }}</text>
+  </view>
+	<view class="describ">
+		<text class="title">Profile</text>
+		<text class="describ-detail">  On SQ since <text class="highlight">{{ user.year }}</text>, {{ user.nickname }} is a developer based in {{ user.location }} with  <text class="highlight">{{ user.followers }}</text> followers.
+		</text>
+	</view>
+</view>
