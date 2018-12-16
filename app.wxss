@@ -8,3 +8,23 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.top-tab{
+  width: 750rpx;
+  height: 100rpx;
+  background: rgb(252, 253, 253);
+  color: rgb(0, 5, 8);
+  font-size: 28rpx;
+  line-height: 100rpx;
+  margin: 0 0 8rpx 0;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+.flex-tab {
+justify-content:space-around;
+align-items:stretch;
+}
+.flex-wrp {
+  display:flex;
+}
+

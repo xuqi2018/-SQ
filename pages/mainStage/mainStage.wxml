@@ -16,9 +16,9 @@
         <view class="answer">
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+              <text class="answer-text" aid="{{answer_id}}">{{item.content}}</text>
             </view>
-          </view>
+          </view>s
           <view class="answer-actions" bindtap="bindItemTap">
             <view class="comments dot">
               <a>{{item.comment_num}} 评论 </a>

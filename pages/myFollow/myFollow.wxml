@@ -1,0 +1,31 @@
+<view class="top-tab flex-wrp flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}}
+  </view>
+</view>
+<scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
+    <block wx:for="{{followedUser}}" wx:for-index="idx" wx:for-item="user" data-idx="{{idx}}" >
+      <view class="username">
+        <a class="user-link">{{user.name}}</a>
+      </view>
+    </block>
+  </view>
+  <view class="ctnt1" hidden="{{currentNavtab==1 ? '' : true}}">
+    <block wx:for="{{followedQuestion}}" wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}" >
+      <view class="question-content">
+        <a class="question-link">{{item.content}}</a>
+      </view>
+    </block>
+  </view>
+  <view class="ctnt2" hidden="{{currentNavtab==2 ? '' : true}}">
+    <block wx:for="{{followedAnswer}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}" >
+      <view class="question">
+        <a class="question-link">{{answer.title}}</a>
+      </view>
+      <view class="answer-content">
+        <a class="answer-link">{{answer.content}}</a>
+      </view>
+    </block>
+  </view>
+</scroll-view>

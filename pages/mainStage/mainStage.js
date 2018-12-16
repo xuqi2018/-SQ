@@ -40,9 +40,11 @@ Page({
   },
   getData:function(){
     wx.request({
-      url: 'localhost:8000/getQuestion',
-      seccess: function(res){
-
+      url: 'localhost:8000/get/object?entity=answer&id=',
+      method: 'get',
+      success(res){
+        console.log("successfully getdata!")
+        this.data=res
       }
     })
   }
