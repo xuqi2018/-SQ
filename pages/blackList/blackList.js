@@ -1,16 +1,29 @@
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo:{}
+
+    
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+         
+          wx.getUserInfo({
+            success: function (res) {
+              console(res.userInfo)
+            }
+          })
+        }
+      }
+    })
 
   },
 
@@ -32,6 +45,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    
+
+
+
 
   },
 
@@ -62,4 +79,7 @@ Page({
   onShareAppMessage: function () {
 
   }
+
+ 
+    
 })
