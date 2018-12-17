@@ -2,7 +2,7 @@ const util = require('../../utils/util.js')
 const app = getApp()
 var mydata = {
   end: 0,
-  replyUserName: ""
+  reviewer: ""
 }
 Page({
 
@@ -19,14 +19,14 @@ Page({
   onLoad: function (options) {
     var that = this;
     mydata.sourceId = options.sourceId
-    mydata.commentId = "";
-    mydata.replyUserName = "";
+    mydata.rid = "";
+    mydata.reviewer = "";
     //设置scroll的高度
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
           scrollHeight: res.windowHeight,
-          userId: app.globalData.haulUserInfo.id
+          userId: app.globalData.UserInfo.id
         });
       }
     });
@@ -59,10 +59,10 @@ Page({
   },
   bindReply: function (e) {
     console.log(e);
-    mydata.commentId = e.target.dataset.commentid;
-    mydata.replyUserName = e.target.dataset.commentusername;
+    mydata.rid = e.target.dataset.rid;
+    mydata.reviewer = e.target.dataset.reviewer;
     this.setData({
-      replyUserName: mydata.replyUserName,
+      reviewer: mydata.reviewer,
       reply: true
     })
   },
@@ -73,10 +73,10 @@ Page({
     }
     return arr1;
   },
-  deleteComment: function (e) {
+  deletereview: function (e) {
     console.log(e);
     var that = this;
-    var commentId = e.target.dataset.commentid;
+    var rid = e.target.dataset.rid;
 
     wx.showModal({
       title: '删除评论',
@@ -84,10 +84,10 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.request({
-            url: config.deleteComment,
+            url: config.deletereview,
             method: "POST",
             data: {
-              commentId: commentId
+              rid: rid
             },
             header: {
               "content-type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -106,10 +106,10 @@ Page({
     })
   },
   cancleReply: function (e) {
-    mydata.commentId = "";
-    mydata.replyUserName = "";
+    mydata.rid = "";
+    mydata.reviewer = "";
     this.setData({
-      replyUserName: mydata.replyUserName,
+      reviewer: mydata.reviewer,
       reply: false
     })
   },
@@ -161,8 +161,8 @@ Page({
   submitForm(e) {
     var form = e.detail.value;
     var that = this;
-    console.log(app.globalData.haulUserInfo);
-    if (form.comment == "") {
+    console.log(app.globalData.UserInfo);
+    if (form.content == "") {
       util.showLog('请输入评论');
       return;
     }
@@ -172,12 +172,12 @@ Page({
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
-        comment: form.comment,
-        userId: app.globalData.haulUserInfo.id,
-        userName: app.globalData.haulUserInfo.userName,
-        replyCommentId: mydata.commentId,
-        replyUserName: mydata.replyUserName,
-        userPhoto: app.globalData.haulUserInfo.userPhoto
+        content: form.content,
+        userId: app.globalData.UserInfo.id,
+        userName: app.globalData.UserInfo.userName,
+        reviewId: mydata.rid,
+        reviewer: mydata.reviewer,
+        userPhoto: app.globalData.UserInfo.userPhoto
       },
       header: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -190,10 +190,10 @@ Page({
             title: "回复成功"
           })
           that.refresh();
-          mydata.commentId = "";
-          mydata.replyUserName = "";
+          mydata.rid = "";
+          mydata.reviewer = "";
           this.setData({
-            replyUserName: mydata.replyUserName,
+            reviewer: mydata.reviewer,
             reply: false
           })
         } else {
