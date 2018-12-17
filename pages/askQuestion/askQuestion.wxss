@@ -1,0 +1,15 @@
+.que-title{
+    padding: 40rpx 20rpx 30rpx;
+    font-size: 38rpx;
+}
+
+.que-content{
+    padding: 0 20rpx;
+    font-size: 26rpx;
+}
+
+.question-item{
+    width: 710rpx;
+    padding: 40rpx 20rpx 10rpx;
+    background: #fff;
+}
