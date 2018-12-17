@@ -11,7 +11,7 @@ Page({
     return {
       
       describ: '自定义分享描述',
-      path: '/page/user/userid=123'
+      path: '/page/userInfo/userid=123'
     }
   },
   onLoad: function (options) {
