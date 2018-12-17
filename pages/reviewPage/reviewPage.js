@@ -1,6 +1,3 @@
-// pages/comment/comment.js
-const model = require('../cityChoose/cityChoose.js')
-const config = require('../../utils/config.js')
 const util = require('../../utils/util.js')
 const app = getApp()
 var mydata = {
@@ -126,7 +123,7 @@ Page({
     var limited = 6;
     var offset = (page - 1) * 6;
     wx.request({
-      url: config.getComments,
+      url: 'localhost: 8000/get/object ? entity = review & id=',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
@@ -171,7 +168,7 @@ Page({
     }
     // 提交评论
     wx.request({
-      url: config.insertComment,
+      url: 'localhost: 8000/get/object ? entity = review & id=',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
