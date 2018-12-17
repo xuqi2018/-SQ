@@ -5,19 +5,25 @@
 </view>
 <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
-    <block wx:for="{{myQuetion}}" wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}" >
-      <view class="question-content">
-        <a class="question-link">{{question.content}}</a>
+    <block wx:for="{{myQuestion}}" wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}" >
+      <view class="question-container">
+        <a class="question-link">
+          <view class="question-title">{{question.questionTitle}}</view>
+          <view class ="question-content">{{question.questionContent}}</view>
+          <view class ="question-answerNum">{{question.answerNum}} 回答</view>
+        </a>
       </view>
     </block>
   </view>
   <view class="ctnt1" hidden="{{currentNavtab==1 ? '' : true}}">
     <block wx:for="{{myAnswer}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}" >
-      <view class="answer-title">
-        <a class="answer-link">{{answer.title}}</a>
-      </view>
-      <view class="answer-content">
-        <a class="answer-link">{{answer.content}}</a>
+      <view class="answer-container">
+        <view class="answer-title">
+          <a class="answer-link">{{answer.questionTitle}}</a>
+        </view>
+        <view class="answer-content">
+          <a class="answer-link">{{answer.answerContent}}</a>
+        </view>
       </view>
     </block>
   </view>
