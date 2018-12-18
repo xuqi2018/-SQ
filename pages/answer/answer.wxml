@@ -1,0 +1,15 @@
+<view id="detail-page">
+  <view id="story-title" style="background-image: url({{ image }})">
+    <view id="title-text">
+      <text id="image-source">{{ imageSource }}</text>
+      <text id="title">{{ title }}</text>
+    </view>
+  </view>
+  <view id="story-content">
+    <template is="wxParse" data="{{ wxParseData:story.nodes }}"/>
+  </view>
+  <view id="action">
+    <button plain id="share" open-type="share">分享</button>
+    <button plain id="discuss" bindtap="goToDiscussion">评论</button>
+  </view>
+</view>

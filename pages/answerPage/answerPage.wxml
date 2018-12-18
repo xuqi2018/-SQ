@@ -1,48 +1,29 @@
-<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
-  <view class="pro-con">
-    <block wx:for="{{list}}" wx:key="{{index}}">
-      <view class="pro-box">
-        <view class="head">
-          <image class="img" src="{{item.userPhoto}}" mode="aspectFit"></image>
-          <view class="box">
-            <view class="shead clear">
-              <view class="names fl">{{item.userName}}
-                  <view wx:if="{{!item.answerer == \" \"}}">
-                  -> {{item.answerer}}
-                </view>
-              </view>
-            </view>
+<!--index.wxml-->
+<view class="container">
+  <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" class="banners" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{banner}}">
+      <swiper-item class="banner" >
+          <image src="{{item.image}}"  data-id="{{item.id}}" bindtap="bindViewTap" class="banner-image" width="100%" height="100%"/>
+          <text class="banner-title">{{item.title}}</text>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="news-item-container">
+    <block wx:for="{{list}}" wx:for-index="id">
+      <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
+      <navigator wx:else url="../detail/detail?id={{item.id}}">
+        <view class="news-item" >
+          <view class="news-item-left">
+            <text class="news-item-title">{{item.title}}</text>
+          </view>
+          <view class="news-item-right">
+            <image src="{{item.images[0]}}" class="news-image"/>
           </view>
         </view>
-        <view class="addr-info">
-          <view class="addr-text">
-            {{item.content}}
-          </view>
-        </view>
-        <view class="info">
-          <view class="text">
-            <text decode="true">{{item.create_time}}</text>
-          </view>
-          <view class="text">
-            <button class="sharebtn" data-aid="{{item.aid}}" data-answerer="{{item.userName}}" bindtap="bindReply">回复</button>
-          </view>
-              <view wx:if="{{item.aid == aid}}" class="status text fr">
-                <text class="delete" decode="true" bindtap='deleteComment' data-rid="{{item.aid}}">删除</text>
-              </view>
-        </view>
-      </view>
+      </navigator>
     </block>
   </view>
-</scroll-view>
-<form bindsubmit="submitForm" report-submit="true">
-  <view class="release">
-    <view  wx:if="{{reply}}" class="replyinfo1">
-      回复<text class="text">{{answerer}}</text>
-      <button class="cancel" bindtap="cancleReply">取消回复</button>
-    </view>
-    <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="请输入回复" name="answer"></textarea>
-      <button form-type="submit" class="submit">发送</button>
-    </view>
-  </view>
-</form>
+  
+</view>
+
