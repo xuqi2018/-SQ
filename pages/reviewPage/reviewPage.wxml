@@ -2,16 +2,11 @@
   <view class="pro-con">
     <block wx:for="{{list}}" wx:key="{{index}}">
       <view class="pro-box">
-        <view class="head">
-          <image class="img" src="{{item.userPhoto}}" mode="aspectFit"></image>
           <view class="box">
             <view class="shead clear">
-              <view class="names fl">{{item.userName}}
                   <view wx:if="{{!item.reviewer == \" \"}}">
                   -> {{item.reviewer}}
                 </view>
-              </view>
-            </view>
           </view>
         </view>
         <view class="addr-info">

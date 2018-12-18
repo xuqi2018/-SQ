@@ -25,7 +25,6 @@ Page({
       success: function (res) {
         that.setData({
           scrollHeight: res.windowHeight,
-          userId: app.globalData.UserInfo.id
         });
       }
     });
@@ -121,7 +120,7 @@ Page({
     var limited = 6;
     var offset = (page - 1) * 6;
     wx.request({
-      url: 'localhost: 8000/get/object ? entity = answer & id=',
+      url: 'localhost: 8000/answer',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
@@ -166,16 +165,13 @@ Page({
     }
     // 提交评论
     wx.request({
-      url: 'localhost: 8000/get/object ? entity = answer & id=',
+      url: 'localhost: 8000/get/answer',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
         content: form.content,
-        userId: app.globalData.UserInfo.id,
-        userName: app.globalData.UserInfo.userName,
         answerId: mydata.aid,
         answerer: mydata.answerer,
-        userPhoto: app.globalData.UserInfo.userPhoto
       },
       header: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",

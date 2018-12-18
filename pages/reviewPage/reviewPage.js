@@ -25,7 +25,6 @@ Page({
       success: function (res) {
         that.setData({
           scrollHeight: res.windowHeight,
-          userId: app.globalData.UserInfo.id
         });
       }
     });
@@ -121,7 +120,7 @@ Page({
     var limited = 6;
     var offset = (page - 1) * 6;
     wx.request({
-      url: 'localhost: 8000/get/object ? entity = review & id=',
+      url: 'localhost: 8000/review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
@@ -159,23 +158,19 @@ Page({
   submitForm(e) {
     var form = e.detail.value;
     var that = this;
-    console.log(app.globalData.UserInfo);
     if (form.content == "") {
       util.showLog('请输入评论');
       return;
     }
     // 提交评论
     wx.request({
-      url: 'localhost: 8000/get/object ? entity = review & id=',
+      url: 'localhost: 8000/review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
         content: form.content,
-        userId: app.globalData.UserInfo.id,
-        userName: app.globalData.UserInfo.userName,
         reviewId: mydata.rid,
         reviewer: mydata.reviewer,
-        userPhoto: app.globalData.UserInfo.userPhoto
       },
       header: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
