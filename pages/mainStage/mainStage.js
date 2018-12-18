@@ -41,17 +41,6 @@ Page({
     //setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
     console.log("lower")
   },
-  //事件处理函数,暂时没有添加问题回答的id的传输
-  bindItemTap: function () {
-    wx.navigateTo({
-      url: '../answer/answer'
-    })
-  },
-  bindQueTap: function () {
-    wx.navigateTo({
-      url: '../question/question'
-    })
-  },
   getData:function(){
     wx.request({
       url: 'localhost:8000/answerOutlineList',

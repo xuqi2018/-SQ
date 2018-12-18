@@ -39,7 +39,7 @@ Page({
   },
   getData: function(){
     wx.request({
-      url: 'localhost:8000/get/object?entity=question$',
+      url: 'localhost:8000/myQuestion',
       success(res){
         this.myQuestion=res
       }

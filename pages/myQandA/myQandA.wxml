@@ -7,11 +7,11 @@
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
     <block wx:for="{{myQuestion}}" wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}" >
       <view class="question-container">
-        <a class="question-link">
+        <navigator class="question-link" url="../questionPage/questionPage?qid={{question.questionId}}">
           <view class="question-title">{{question.questionTitle}}</view>
           <view class ="question-content">{{question.questionContent}}</view>
           <view class ="question-answerNum">{{question.answerNum}} 回答</view>
-        </a>
+        </navigator>
       </view>
     </block>
   </view>
@@ -19,10 +19,14 @@
     <block wx:for="{{myAnswer}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}" >
       <view class="answer-container">
         <view class="answer-title">
-          <a class="answer-link">{{answer.questionTitle}}</a>
+          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+            {{answer.questionTitle}}
+          </navigator>
         </view>
         <view class="answer-content">
-          <a class="answer-link">{{answer.answerContent}}</a>
+          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+            {{answer.answerContent}}
+          </navigator>
         </view>
       </view>
     </block>

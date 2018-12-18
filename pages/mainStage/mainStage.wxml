@@ -8,20 +8,21 @@
         </a>
       </view>
       <view class="feed-content">
-        <view class="question" qid="{{answer.questionId}}" bindtap="bindQueTap">
-          <a class="question-link">
+        <view class="question" qid="{{answer.questionId}}">
+          <navigator class="question-link" url="../questionPage/questionPage?qid={{answer.questionId}}">
             <text>{{answer.questionTitle}}</text>
-          </a>
+          </navigator>
         </view>
         <view class="answer">
           <view class="answer-body">
-            <view bindtap="bindItemTap">
+            <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
               <text class="answer-text" aid="{{answer.answerId}}">{{answer.answerContent}}</text>
-            </view>
+            </navigator>
           </view>
-          <view class="answer-actions" bindtap="bindItemTap">
+          <view class="answer-actions">
             <view class="comments dot">
-              <a>{{answer.reviewNum}} 评论 </a>
+              <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+                {{answer.reviewNum}} 评论 </navigator>
             </view>
           </view>
         </view>
