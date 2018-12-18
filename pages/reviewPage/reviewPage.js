@@ -120,7 +120,7 @@ Page({
     var limited = 6;
     var offset = (page - 1) * 6;
     wx.request({
-      url: 'localhost: 8000/review',
+      url: 'localhost: 8000 / get / object=?entity=review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
@@ -164,7 +164,7 @@ Page({
     }
     // 提交评论
     wx.request({
-      url: 'localhost: 8000/review',
+      url: 'localhost: 8000/get/object=?entity=review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
