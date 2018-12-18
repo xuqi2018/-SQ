@@ -4,8 +4,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    feed:[],
-    feed_length:0
+    answerList:[{
+      "nickName": "William",
+      "questionId": "Q001",
+      "answerId": "A001",
+      "questionTitle": "如何使用微信小程序开发平台？",
+      "answerContent": "就这么用",
+      "reviewNum": "15"
+    }, {
+        "nickName": "Leo",
+        "questionId": "Q001",
+        "answerId": "A002",
+        "questionTitle": "如何使用微信小程序开发平台？",
+        "answerContent": "不然怎么用？",
+        "reviewNum": "23"
+      }],
+    listSize:1
   },
 
   /**
@@ -13,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     var that =this
-    this.getData();
+    //this.getData();
   },
   upper: function () {
     wx.showNavigationBarLoading()
@@ -27,20 +41,9 @@ Page({
     //setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
     console.log("lower")
   },
-  //事件处理函数,暂时没有添加问题回答的id的传输
-  bindItemTap: function () {
-    wx.navigateTo({
-      url: '../answer/answer'
-    })
-  },
-  bindQueTap: function () {
-    wx.navigateTo({
-      url: '../question/question'
-    })
-  },
   getData:function(){
     wx.request({
-      url: 'localhost:8000/get/object?entity=answer&id=',
+      url: 'localhost:8000/answerOutlineList',
       method: 'get',
       success(res){
         console.log("successfully getdata!")
