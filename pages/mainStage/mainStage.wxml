@@ -15,7 +15,7 @@
         </view>
         <view class="answer">
           <view class="answer-body">
-            <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+            <navigator class="answer-link" url="../answer/answer?aid={{answer.answerId}}">
               <text class="answer-text" aid="{{answer.answerId}}">{{answer.answerContent}}</text>
             </navigator>
           </view>
