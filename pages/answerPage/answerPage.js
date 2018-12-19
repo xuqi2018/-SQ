@@ -1,36 +1,55 @@
-// index.js
-
-//index.js
-//获取应用实例
-var app = getApp()
-var utils = require('../../utils/util.js');
-//初始化数据
 Page({
   data: {
-    list: [],
-    duration: 2000,
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-    loading: false,
-    plain: false
+    storyId: '',
+    image: '',
+    imageSource: '',
+    title: ''
   },
-  //onLoad方法
-  onLoad: function () {
-    var that = this;
+
+  onLoad(option) {
+
+  },
+
+  /**
+   * 进入页面加载热闻详情
+   */
+  onShow() {
+    this.getStoryDetail()
+  },
+
+  /**
+   * 获取热闻详情
+   */
+  getStoryDetail() {
     wx.request({
-      url: 'localhost: 8000 / get / object=?entity=answer',
-      headers: { // http头数据
-        'Content-Type': 'application/json'
-      },
-      success: function (res) { //请求成功后的回调
-        that.setData({   // 设置返回值
-          banner: res.data.top_stories,  //banner图片数据
-          list: [{ header: '问答' }].concat(res.data.stories)  
+      url: 'localhost: 8000 / get / object=?entity=answer' + this.data.storyId,
+      success: (res) => {
+        this.setData({
+          image: res.data.image,
+          imageSource: res.data.image_source,
+          title: res.data.title
         })
       }
     })
-    this.index = 1;   //方便下拉点击更多时的计数下标，暂可忽略
   },
 
+  /**
+   * 转发分享当前热闻
+   */
+  onShareAppMessage() {
+    return {
+      title: this.data.title,
+      imageUrl: this.data.image,
+      path: '/pages/answer/answer?id=' + this.data.storyId
+    }
+  },
+
+  /**
+   * 跳转到当前热闻对应的评论页面
+   */
+  goToDiscussion() {
+    wx.navigateTo({
+      url: '/pages/reviewPage/reviewPage?id=' + this.data.storyId
+    })
+  }
 })
