@@ -10,6 +10,7 @@ Page({
     var that=this
   },
   onShow:function(){
+    var that = this
     this.getUserInfo()
     this.goToblackList()
 
@@ -22,7 +23,7 @@ Page({
   },
   getUserInfo(){
     wx.request({
-      url:'localhost:8000/get/object=?entity=user'+this.data.uid,
+      url:'localhost:8000/get/object=?entity=user',
       success:(res)=>{
         console.log("successfully getdata!")
         this.data=res
