@@ -1,4 +1,3 @@
-<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
   <view class="pro-con">
     <block wx:for="{{list}}" wx:key="{{index}}">
       <view class="pro-box">
@@ -29,12 +28,11 @@
       </view>
     </block>
   </view>
-</scroll-view>
 <form bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view  wx:if="{{reply}}" class="replyinfo1">
       <navigator class="linktoreview" url="../reviewpage/reviewpage?rid={{answer.answerId}}">
-              评论 </navigator>
+              确认回答 </navigator>
     </view>
   </view>
 </form>
