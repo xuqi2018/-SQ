@@ -1,5 +1,5 @@
 var util = require('../../utils/util.js')
-var app = getApp()
+
 Page({
   data: {
     describ: 'Hello World',
@@ -7,14 +7,27 @@ Page({
   },
 
   onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+    var that=this
+  },
+  onShow:function(){
+    this.getUserInfo()
+    this.goToblackList()
+
+  },
+  
+  goToblackList(){
+    wx.navigateTo({
+      url:'/pages/blackList'
+    })
+  },
+  getUserInfo(){
+    wx.request({
+      url:'localhost:8000/get/object=?entity=user'+this.data.uid,
+      success:(res)=>{
+        console.log("successfully getdata!")
+        this.data=res
+
+      },
     })
   },
 })
