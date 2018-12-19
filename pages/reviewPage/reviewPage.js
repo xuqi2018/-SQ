@@ -9,7 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [],
+    list: [{
+      "rid": 1,
+      "content": "content",
+      "reviewer": "User Id",
+      "create_time": 1111,
+      "recent_time": 1111}]
   },
 
   /**
@@ -120,7 +125,7 @@ Page({
     var limited = 6;
     var offset = (page - 1) * 6;
     wx.request({
-      url: 'localhost: 8000 / get / object=?entity=review',
+      url: 'localhost:8000/review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
@@ -164,7 +169,7 @@ Page({
     }
     // 提交评论
     wx.request({
-      url: 'localhost: 8000/get/object=?entity=review',
+      url: 'localhost:8000/review',
       method: "POST",
       data: {
         sourceId: mydata.sourceId,
