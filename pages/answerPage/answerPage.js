@@ -1,55 +1,100 @@
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    storyId: '',
-    image: '',
-    imageSource: '',
-    title: ''
+    questionList:[{
+      "title":"aaaaa"
+    }],
+    answerList:[{
+      "answerer":"a",
+      "content":"b",
+      "createtime":"c"
+    }]
+
   },
 
-  onLoad(option) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
   },
 
   /**
-   * 进入页面加载热闻详情
+   * 生命周期函数--监听页面初次渲染完成
    */
-  onShow() {
-    this.getStoryDetail()
+  onReady: function () {
+
   },
 
   /**
-   * 获取热闻详情
+   * 生命周期函数--监听页面显示
    */
-  getStoryDetail() {
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  getData: function () {
     wx.request({
-      url: 'localhost: 8000 / get / object=?entity=answer' + this.data.storyId,
-      success: (res) => {
-        this.setData({
-          image: res.data.image,
-          imageSource: res.data.image_source,
-          title: res.data.title
-        })
+      url: 'localhost:8000/question?id=',
+      method: 'Get',
+      data:{title=data.title},
+      header: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+      success(res) {
+        console.log("successfully getdata!")
+        this.data = res
+      },
+    wx.request({
+      url: 'localhost:8000/answer',
+      method: 'Post',
+      data: {
+        content=data.content,
+        answerer=data.answerer,
+        createtime=data.create_time
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+      success(res) {
+        console.log("successfully getdata!")
+        this.data = res
       }
-    })
-  },
-
-  /**
-   * 转发分享当前热闻
-   */
-  onShareAppMessage() {
-    return {
-      title: this.data.title,
-      imageUrl: this.data.image,
-      path: '/pages/answer/answer?id=' + this.data.storyId
-    }
-  },
-
-  /**
-   * 跳转到当前热闻对应的评论页面
-   */
-  goToDiscussion() {
-    wx.navigateTo({
-      url: '/pages/reviewPage/reviewPage?id=' + this.data.storyId
-    })
-  }
 })

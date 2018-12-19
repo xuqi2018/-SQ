@@ -19,7 +19,7 @@
             <text decode="true">{{item.create_time}}</text>
           </view>
           <view class="text">
-            <button class="sharebtn" data-rid="{{item.rid}}" data-reviewer="{{item.userName}}" bindtap="bindReply">回复</button>
+            <button class="sharebtn" data-rid="{{item.rid}}" data-reviewer="{{item.userName}}" bindtap="bindReply">评论</button>
           </view>
               <view wx:if="{{item.rid == rid}}" class="status text fr">
                 <text class="delete" decode="true" bindtap='deleteComment' data-rid="{{item.rid}}">删除</text>
@@ -32,11 +32,11 @@
 <form bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view  wx:if="{{reply}}" class="replyinfo1">
-      回复<text class="text">{{reviewer}}</text>
-      <button class="cancel" bindtap="cancleReply">取消回复</button>
+      评论<text class="text">{{reviewer}}</text>
+      <button class="cancel" bindtap="cancleReply">取消评论</button>
     </view>
     <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="请输入回复" name="review"></textarea>
+      <textarea placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="请输入评论" name="review"></textarea>
       <button form-type="submit" class="submit">发送</button>
     </view>
   </view>

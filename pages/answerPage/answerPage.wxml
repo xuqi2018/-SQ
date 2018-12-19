@@ -1,15 +1,14 @@
-<view id="detail-page">
-  <view id="story-title" style="background-image: url({{ image }})">
-    <view id="title-text">
-      <text id="image-source">{{ imageSource }}</text>
-      <text id="title">{{ title }}</text>
-    </view>
-  </view>
-  <view id="story-content">
-    <template is="wxParse" data="{{ wxParseData:story.nodes }}"/>
-  </view>
-  <view id="action">
-    <button plain id="share" open-type="share">分享</button>
-    <button plain id="discuss" bindtap="goToDiscussion">评论</button>
-  </view>
+<view class="container">
+  <view class="question-title">
+    <text>问题：{{questionList.title}}</text>
+  </view> 
+  <block wx:for="{{answerList}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">
+    <view class="answer-content">
+      <text>回答:{{answer.content}}</text>
+      <text>{{answer.answerer}}</text>
+      <text>{{answer.createtime}}</text>
+    </view>  
+    <navigator class="answer-link" url="../answer/answer?aid={{answer.aid}}">评论</navigator>
+    <navigator class="review-link" url="../reviewPage/reviewPage?rid={{answer.aid}}">评论</navigator>
+  </block>
 </view>
