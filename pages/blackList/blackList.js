@@ -6,7 +6,14 @@ Page({
   data: {
     navTab: ["黑名单"],
     currentNavtab: "0",
-    blocked_users: [],
+    blocked_users: [{
+      "uid":"1",
+      "blocked_user":"lisi"},
+      {
+        "uid":"1",
+        "blocked_user":"xiaoming"
+      }
+],
 
   }, onLoad: function () {
     var that = this
