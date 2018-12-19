@@ -1,200 +1,151 @@
-const app = getApp()
-var mydata = {
-  end: 0,
-  answerer: ""
-}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [],
+    list:[{
+      "answerer":"a",
+      "content":"b",
+      "create_time":"c"
+    }]
+
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面初次渲染完成
    */
-  onLoad: function (options) {
-    var that = this;
-    mydata.sourceId = options.sourceId
-    mydata.aid = "";
-    mydata.answerer = "";
-    //设置scroll的高度
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          scrollHeight: res.windowHeight,
-        });
-      }
-    });
-    mydata.page = 1;
-    that.getPageInfo(mydata.page);
+  onReady: function () {
+
   },
+
   /**
-   * 页面下拉刷新事件的处理函数
+   * 生命周期函数--监听页面显示
    */
-  refresh: function () {
-    console.log('refresh');
-    mydata.page = 1
-    this.getPageInfo(mydata.page, function () {
-      this.setData({
-        list: []
-      })
-    });
-    mydata.end = 0;
+  onShow: function () {
+
   },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
   /**
    * 页面上拉触底事件的处理函数
    */
-  bindDownLoad: function () {
-    console.log("onReachBottom");
-    var that = this;
-    if (mydata.end == 0) {
-      mydata.page++;
-      that.getPageInfo(mydata.page);
-    }
-  },
-  bindReply: function (e) {
-    console.log(e);
-    mydata.aid = e.target.dataset.aid;
-    mydata.answerer = e.target.dataset.answerer;
-    this.setData({
-      answerer: mydata.answerer,
-      reply: true
-    })
-  },
-  // 合并数组
-  addArr(arr1, arr2) {
-    for (var i = 0; i < arr2.length; i++) {
-      arr1.push(arr2[i]);
-    }
-    return arr1;
-  },
-  deleteanswer: function (e) {
-    console.log(e);
-    var that = this;
-    var aid = e.target.dataset.aid;
+  onReachBottom: function () {
 
-    wx.showModal({
-      title: '删除评论',
-      content: '请确认是否删除该评论？',
-      success: function (res) {
-        if (res.confirm) {
-          wx.request({
-            url: config.deleteanswer,
-            method: "POST",
-            data: {
-              aid: aid
-            },
-            header: {
-              "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-            },
-            success: res => {
-              that.refresh();
-              wx.showToast({
-                title: "删除成功"
-              })
-            }
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
   },
-  cancleReply: function (e) {
-    mydata.aid = "";
-    mydata.answerer = "";
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  onLoad: function () {
+    var that = this
+    this.getData();
+    this.goTouserInfo();
+  },
+  switchTab: function (e) {
     this.setData({
-      answerer: mydata.answerer,
-      reply: false
-    })
+      currentNavtab: e.currentTarget.dataset.idx
+    });
   },
-  // 更新页面信息
-  // 此处的回调函数在 传入新值之前执行 主要用来清除页面信息
-  getPageInfo(page, callback) {
-    var that = this;
-    console.log("getPageInfo");
-    console.log("page" + page);
-    var limited = 6;
-    var offset = (page - 1) * 6;
+  getData: function () {
     wx.request({
-      url: 'localhost: 8000 / get / object=?entity=answer',
-      method: "POST",
-      data: {
-        sourceId: mydata.sourceId,
-        limited: limited,
-        offset: offset
+      url: 'localhost:8000/answer',
+      success(res) {
+        this.blocked_user = res
       },
+    })
+
+  },
+  var bindblur ;
+  Page({
+    bindblur:function(e){
+    console.log('1111111:', e.detail.value)
+    bindblur = e.detail.value;
+  },
+
+  onLoad: function (a) {
+    var that = this;
+    actid = a.id;
+    // 查询评论fetch
+    wx.request({
+      url: 'https://m.yishushe.net/addons/up_text.php',
+      method: 'POST',
       header: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        'content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
       },
-      success: res => {
-        console.log(res);
-        if (page == 1) {
-          that.data.list = res.data;
-          that.setData({
-            list: that.data.list
-          })
-          mydata.end = 0;
-        } else {
-          // 当前页为其他页
-          var list = that.data.list;
-          if (res.data.length != 0) {
-            list = that.addArr(list, res.data);
-            that.setData({
-              list: list
-            })
-            mydata.end = 0;
-          } else {
-            mydata.end = 1;
-          }
-        }
-        wx.hideLoading();
+      data: {
+        act_id: actid
+      },
+      success: function (result) {
+        that.setData({
+          pl_list: result.data.reverse(),
+        })
+      },
+      fail: res => {
+        wx.showToast({
+          title: '网络不好哟',
+          image: '/image/wrong.png',
+          duration: 3000
+        })
       }
     })
   },
-  submitForm(e) {
-    var form = e.detail.value;
-    var that = this;
-    if (form.content == "") {
-      util.showLog('请输入评论');
-      return;
-    }
-    // 提交评论
+  btn_send: function () {
+    var that = this
+    //添加评论
+    console.log('文章id：act_id :', actid);
+    console.log('用户缓存id：user_id :', user_id);
+    console.log('文本输入框: input_value :', bindblur);
     wx.request({
-      url: 'localhost: 8000/get/object=?entity=answer',
-      method: "POST",
-      data: {
-        sourceId: mydata.sourceId,
-        content: form.content,
-        answerId: mydata.aid,
-        answerer: mydata.answerer,
-      },
+      url: 'https://m.yishushe.net/addons/up_text.php',
+      method: 'POST',
       header: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        //token: app.globalData.token
+        'content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
       },
-      success: res => {
-        console.log(res)
-        if (res.data.success) {
-          wx.showToast({
-            title: "回复成功"
-          })
-          that.refresh();
-          mydata.aid = "";
-          mydata.answerer = "";
-          this.setData({
-            answerer: mydata.answerer,
-            reply: false
-          })
-        } else {
-          wx.showToast({
-            title: '回复失败，请检查您的网络',
-          })
-        }
+      data: {
+        act_id: actid,
+        user_id: user_id,
+        input_value: bindblur
+      },
+      success: function (result) {
+        that.setData({
+          pl_list: result.data.reverse(),
+          input_value: "",
+        })
+      },
+      fail: res => {
+        wx.showToast({
+          title: '网络不好哟',
+          image: '/image/wrong.png',
+          duration: 3000
+        })
       }
     })
   }
+
 })

@@ -1,40 +1,15 @@
-<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
-  <view class="pro-con">
-    <block wx:for="{{list}}" wx:key="{{index}}">
-      <view class="pro-box">
-          <view class="box">
-            <view class="shead clear">
-                  <view wx:if="{{!item.answerer==\"\"}}">
-                  -> {{item.answerwer}}
-                </view>
-          </view>
-        </view>
-        <view class="addr-info">
-          <view class="addr-text">
-            {{item.content}}
-          </view>
-        </view>
-        <view class="info">
-          <view class="text">
-            <text decode="true">{{item.create_time}}</text>
-          </view>
-          <view class="text">
-            <button class="sharebtn" data-aid="{{item.rid}}" data-answerer="{{item.userName}}" bindtap="bindReply">回复
-            </button>
-          </view>
-              <view wx:if="{{item.aid == aid}}" class="status text fr">
-                <text class="delete" decode="true" bindtap='deleteComment' data-aid="{{item.aid}}">删除</text>
-              </view>
-        </view>
-      </view>
-    </block>
-  </view>
-</scroll-view>
-<form bindsubmit="submitForm" report-submit="true">
-  <view class="release">
-    <view  wx:if="{{reply}}" class="replyinfo1">
-      <navigator class="linktoreview" url="../reviewpage/reviewpage?rid={{answer.answerId}}">
-              评论 </navigator>
+<view class="pro-con">
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="answerer">回答者：{{item.answerwer}}</view>
+    <view class="addr-text">
+      回答内容：{{item.content}}
     </view>
-  </view>
-</form>
+    <view class="answertime">
+      <text decode="true">回答时间：{{item.create_time}}</text>
+    </view>
+  </block>
+  <input class="input" name="answer" placeholder="请输入你的回答"
+    bindinput ="answerInput"></input>
+  <button class="sharebtn" data-aid="{{item.rid}}" data-answerer="{{item.userName}}" bindtap="bindReply">回复</button>
+</view>
+

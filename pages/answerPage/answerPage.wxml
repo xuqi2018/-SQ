@@ -1,14 +1,10 @@
 <view class="container">
-  <view class="question-title">
-    <text>问题：{{questionList.title}}</text>
-  </view> 
-  <block wx:for="{{answerList}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">
-    <view class="answer-content">
-      <text>回答:{{answer.content}}</text>
-      <text>{{answer.answerer}}</text>
-      <text>{{answer.createtime}}</text>
-    </view>  
-    <navigator class="answer-link" url="../answer/answer?aid={{answer.aid}}">评论</navigator>
-    <navigator class="review-link" url="../reviewPage/reviewPage?rid={{answer.aid}}">评论</navigator>
+  <block wx:for="{{list}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">
+    <view class="answer-content"><text>回答：{{answer.content}}</text></view> 
+    <view calss=""><text>回答人：{{answer.answerer}}</text></view>
+    <view><text>回答时间：{{answer.createtime}}</text></view>
+     
+    <navigator class="answer-link" url="../answer/answer?aid={{answer.aid}}"><button>回答</button></navigator>
+    <navigator class="review-link" url="../reviewPage/reviewPage?rid={{answer.aid}}"><button>评论</button></navigator>
   </block>
 </view>
