@@ -61,5 +61,21 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  listenerLogin:function(){
+
+  },
+
+  loginBtnClick:function(){
+      app.appData.userinfo={answer:}
+  },
+
+  answerInput:function(event){
+      this.setData({answer:event.detail.value})
+  },
+
+  answerDescription:function(event){
+    this.setData({ answerDescription: event.detail.value })
   }
 })
