@@ -9,4 +9,5 @@
 		<text class="title">个性签名</text>
 	<text class="profile-detail" >{{describ}}</text>
 	</view>
+  <navigator class="blackList-link" url="/pages/blackList/blackList?">黑名单</navigator>
 </view>
