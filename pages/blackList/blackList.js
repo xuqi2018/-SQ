@@ -11,6 +11,7 @@ Page({
   }, onLoad: function () {
     var that = this
     this.getData();
+    this.goTouserInfo();
   },
   switchTab: function (e) {
     this.setData({
@@ -19,11 +20,16 @@ Page({
   },
   getData: function () {
     wx.request({
-      url: 'localhost:8000/get/object?entity=blocked_user$',
+      url: 'localhost:8000/get/object?entity=user&id=123',
       success(res) {
         this.blocked_user = res
-      }
+      },
     })
 
-  }
+  },
+goTouserInfo() {
+    wx.navigateTo({
+      url: '/pages/userInfo'
+    })
+  },
 })
