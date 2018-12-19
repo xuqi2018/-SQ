@@ -7,11 +7,11 @@ Page({
     navTab: ["黑名单"],
     currentNavtab: "0",
     blocked_users: [{
-      "uid":"1",
-      "blocked_user":"lisi"},
+      uid:"1",
+      blocked_user:"lisi"},
       {
-        "uid":"1",
-        "blocked_user":"xiaoming"
+        uid:"2",
+        blocked_user:"xiaoming"
       }
 ],
 
