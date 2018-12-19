@@ -2,4 +2,6 @@
     <block wx:for="{{blocked_users}}" wx:for-item="blocked_user" wx:key="uid">
         <view>{{uid}}:{{blocked_user.name}}</view>
     </block>
+    <navigator class="userInfo-link" url="/pages/userInfo/userInfo?">用户信息</navigator>
+    
 </view>
