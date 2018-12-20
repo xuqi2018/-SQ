@@ -1,26 +1,35 @@
 Page({
   data: {
     describ: 'Hello World',
-    userInfo: {}
+    userInfo: {
+      //"nickname":qiqi,
+      
+    }
   },
 
-  onLoad: function () {
-    var that = this
+  onLoad: function (option){
+    
+    //var that = this
+    this.getData(this);
   },
-  onShow: function () {
-    var that = this
-    this.getUserInfo()
+  //onShow: function () {
+   // var that = this
+    //this.getUserInfo()
 
 
-  },
+  //},
 
 
-  getUserInfo() {
+  getData:function(e) {
     wx.request({
-      url: 'localhost:8000/user',
+      url: 'http://172.19.147.177:80/object?entity=user&id=3',
+      method:"get",
       success(res) {
-        console.log("successfully getdata!")
-        this.user = res
+        console.log(res)
+        //this.userInfo = res
+        e.setData({
+          userInfo:res.data.body
+        })
 
       },
     })

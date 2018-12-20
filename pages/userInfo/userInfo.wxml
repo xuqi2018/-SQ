@@ -3,11 +3,11 @@
 		<image class="avatar" mode="widthFix" src="{{userInfo.avatarUrl}}"/>
 	</view>
 	<view class="basic">
-		<text class="name">{{ userInfo.nickName }}</text>
+		<text class="name">{{ userInfo.nickname }}</text>
 	</view>
 	<view class="profile">
 		<text class="title">个性签名</text>
-	<text class="profile-detail" >{{describ}}</text>
+	<text class="profile-detail" >{{userInfo.describe}}</text>
     <text class="question_num">问题数</text>
   <text class="question_num-detail">{{"2"}}</text> 
   <text class="answer_num">回答数</text>

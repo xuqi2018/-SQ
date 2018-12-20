@@ -3,11 +3,11 @@
 		<image class="avatar" mode="widthFix" src="{{userInfo.avatarUrl}}"/>
 	</view>
 	<view class="basic">
-		<text class="name">{{ userInfo.nickname }}</text>
+		<text class="name">{{userInfo.nickname}}</text>
 	</view>
 	<view class="profile">
 		<text class="title">个性签名</text>
-	<text class="profile-detail" >{{describ}}</text>
+	<text class="profile-detail" >{{userInfo.describe}}</text>
 	</view>
   <navigator class="blackList-link" url="/pages/blackList/blackList?">黑名单</navigator>
 </view>
