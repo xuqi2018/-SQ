@@ -9,7 +9,7 @@
     <block wx:for="{{blocked_users}}" wx:for-index="idx" wx:for-item="blocked_user" data-idx="{{idx}}">
  
      <view class="user-container"></view>
-       <view class="uid">{{blocked_user.uid}}:{{blocked_user.blocked_user}}</view>
+       <view class="uid">{{blocked_user.nickname}}</view>
      
     </block>
   </view>
