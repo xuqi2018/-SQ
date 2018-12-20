@@ -4,11 +4,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[{
-      "answerer":"a",
-      "content":"b",
-      "create_time":"c"
-    }]
+    qid:[],
+    list:[]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
   },
 
@@ -37,6 +40,17 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    var that=this;
+    wx.request({
+      url: '',
+      method: 'get',
+      success(res) {
+        console.log("get id")
+        this.setData({
+          qid: res.data.qid
+        })
+      }
+    })
 
   },
 
@@ -60,92 +74,18 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onLoad: function () {
-    var that = this
-    this.getData();
-    this.goTouserInfo();
-  },
-  switchTab: function (e) {
-    this.setData({
-      currentNavtab: e.currentTarget.dataset.idx
-    });
-  },
-  getData: function () {
+  formSubmit:function(e){
+    var that=this;
     wx.request({
-      url: 'localhost:8000/answer',
+      url: app.baseUrl + '/AddAnswer',
+      method: 'POST',
       success(res) {
-        this.blocked_user = res
-      },
-    })
-
-  },
-  var bindblur ;
-  Page({
-    bindblur:function(e){
-    console.log('1111111:', e.detail.value)
-    bindblur = e.detail.value;
-  },
-
-  onLoad: function (a) {
-    var that = this;
-    actid = a.id;
-    // 查询评论fetch
-    wx.request({
-      url: 'https://m.yishushe.net/addons/up_text.php',
-      method: 'POST',
-      header: {
-        'content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        act_id: actid
-      },
-      success: function (result) {
-        that.setData({
-          pl_list: result.data.reverse(),
+        console.log("successfully postdata!")
+        data({
+          qid:qid,
+          content:e.detail.value.content
         })
-      },
-      fail: res => {
-        wx.showToast({
-          title: '网络不好哟',
-          image: '/image/wrong.png',
-          duration: 3000
-        })
-      }
-    })
-  },
-  btn_send: function () {
-    var that = this
-    //添加评论
-    console.log('文章id：act_id :', actid);
-    console.log('用户缓存id：user_id :', user_id);
-    console.log('文本输入框: input_value :', bindblur);
-    wx.request({
-      url: 'https://m.yishushe.net/addons/up_text.php',
-      method: 'POST',
-      header: {
-        'content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        act_id: actid,
-        user_id: user_id,
-        input_value: bindblur
-      },
-      success: function (result) {
-        that.setData({
-          pl_list: result.data.reverse(),
-          input_value: "",
-        })
-      },
-      fail: res => {
-        wx.showToast({
-          title: '网络不好哟',
-          image: '/image/wrong.png',
-          duration: 3000
-        })
-      }
+    }
     })
   }
-
 })

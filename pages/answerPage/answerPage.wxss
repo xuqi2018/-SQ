@@ -1,0 +1,11 @@
+.answerer{
+  height: 100%;
+  display: flex;
+  color:gainsboro;
+}
+
+.reviewlink{
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 60%;
+}
