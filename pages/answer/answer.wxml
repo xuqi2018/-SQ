@@ -1,15 +1,7 @@
 <view class="pro-con">
-  <block wx:for="{{list}}" wx:key="{{index}}">
-    <view class="answerer">回答者：{{item.answerwer}}</view>
-    <view class="addr-text">
-      回答内容：{{item.content}}
-    </view>
-    <view class="answertime">
-      <text decode="true">回答时间：{{item.create_time}}</text>
-    </view>
-  </block>
-  <input class="input" name="answer" placeholder="请输入你的回答"
-    bindinput ="answerInput"></input>
-  <button class="sharebtn" data-aid="{{item.rid}}" data-answerer="{{item.userName}}" bindtap="bindReply">回复</button>
+ <form bindsubmit="reg">
+    <view>添加内容：<input type="text" name="answer_content"></input></view>
+  </form>
+  <button class="submit" data-aid="{{item.aid}}" data-answerer="{{item.userName}}" bindtap="bindReply">提交</button>
 </view>
 

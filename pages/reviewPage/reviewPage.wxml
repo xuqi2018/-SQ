@@ -1,43 +1,6 @@
-<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
-  <view class="pro-con">
-    <block wx:for="{{list}}" wx:key="{{index}}">
-      <view class="pro-box">
-          <view class="box">
-            <view class="shead clear">
-                  <view wx:if="{{!item.reviewer == \" \"}}">
-                  -> {{item.reviewer}}
-                </view>
-          </view>
-        </view>
-        <view class="addr-info">
-          <view class="addr-text">
-            {{item.content}}
-          </view>
-        </view>
-        <view class="info">
-          <view class="text">
-            <text decode="true">{{item.create_time}}</text>
-          </view>
-          <view class="text">
-            <button class="sharebtn" data-rid="{{item.rid}}" data-reviewer="{{item.userName}}" bindtap="bindReply">评论</button>
-          </view>
-              <view wx:if="{{item.rid == rid}}" class="status text fr">
-                <text class="delete" decode="true" bindtap='deleteComment' data-rid="{{item.rid}}">删除</text>
-              </view>
-        </view>
-      </view>
-    </block>
-  </view>
-</scroll-view>
-<form bindsubmit="submitForm" report-submit="true">
-  <view class="release">
-    <view  wx:if="{{reply}}" class="replyinfo1">
-      评论<text class="text">{{reviewer}}</text>
-      <button class="cancel" bindtap="cancleReply">取消评论</button>
-    </view>
-    <view class="replyinfo2">
-      <textarea placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="请输入评论" name="review"></textarea>
-      <button form-type="submit" class="submit">发送</button>
-    </view>
-  </view>
-</form>
+<view class="pro-con">
+ <form bindsubmit="reg">
+    <view>评论内容：<input type="text" name="content"></input></view>
+  </form>
+  <button class="submit" data-rid="{{item.rid}}" data-reviewer="{{item.userName}}" bindtap="bindReply">提交</button>
+</view>

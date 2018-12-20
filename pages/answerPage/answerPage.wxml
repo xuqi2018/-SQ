@@ -1,10 +1,7 @@
 <view class="container">
-  <block wx:for="{{list}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">
+  <block wx:for="{{list}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">    
+    <view calss="answerer"><text>回答者：{{answer.answerer}}</text></view>
     <view class="answer-content"><text>回答：{{answer.content}}</text></view> 
-    <view calss=""><text>回答人：{{answer.answerer}}</text></view>
-    <view><text>回答时间：{{answer.createtime}}</text></view>
-     
-    <navigator class="answer-link" url="../answer/answer?aid={{answer.aid}}"><button>回答</button></navigator>
-    <navigator class="review-link" url="../reviewPage/reviewPage?rid={{answer.aid}}"><button>评论</button></navigator>
+    <navigator class="review-link" url="../reviewPage/reviewPage?answer={{answer.aid}}"><button>评论</button></navigator>
   </block>
 </view>
