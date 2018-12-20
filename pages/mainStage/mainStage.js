@@ -1,5 +1,6 @@
+//获取应用实例
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -19,15 +20,16 @@ Page({
         "answerContent": "不然怎么用？",
         "reviewNum": "23"
       }],
-    listSize:1
+    listSize:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that =this
-    //this.getData();
+    //var that =this
+    //console.log(that)
+    this.getData(this);
   },
   upper: function () {
     wx.showNavigationBarLoading()
@@ -41,13 +43,15 @@ Page({
     //setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
     console.log("lower")
   },
-  getData:function(){
+  getData:function(e){
     wx.request({
-      url: 'localhost:8000/answerOutlineList',
+      url: app.baseUrl+'/answerOutlineList',
       method: 'get',
       success(res){
         console.log("successfully getdata!")
-        this.data=res
+        e.setData({
+          answerList:res.data
+        })
       }
     })
   }

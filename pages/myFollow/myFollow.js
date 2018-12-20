@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
   data: {
     navTab: ["用户", "提问","回答"],
@@ -23,30 +25,39 @@ Page({
       "followTime": "2018-11-15"}]
   },
   onLoad: function (options) {
-    //this.getData()
+    this.getData(this)
   },
   switchTab: function (e) {
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
   },
-  getData:function(){
+  getData:function(e){
     wx.request({
-      url: 'localhost:8000/followedUser',
+      url: app.baseUrl+'/followedUser',
       success(res){
-        this.followedUser=res
+        e.setData({
+          followedUser: res.data
+        })
+        //this.followedUser=res
       }
     })
     wx.request({
-      url: 'localhost:8000/followedQuestion',
+      url: app.baseUrl +'/followedQuestion',
       success(res) {
-        this.followedQuestion = res
+        e.setData({
+          followedQuestion: res.data
+        })
+        //this.followedQuestion = res
       }
     })
     wx.request({
-      url: 'localhost:8000/followAnswer',
+      url: app.baseUrl +'/followedAnswer',
       success(res) {
-        this.followedAnswer = res
+        e.setData({
+          followedAnswer:res.data
+        })
+        //this.followedAnswer = res
       }
     })
   }
