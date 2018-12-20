@@ -1,3 +1,5 @@
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -30,24 +32,29 @@ Page({
   }, 
   onLoad: function () {
     var that=this
-    //this.getData();
+    this.getData(that);
   },
   switchTab: function (e) {
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
   },
-  getData: function(){
+  getData: function(e){
     wx.request({
-      url: 'localhost:8000/myQuestion',
+      url: app.baseUrl+'/myQuestion',
       success(res){
-        this.myQuestion=res
+        console.log(res)
+        e.setData({
+          myQuestion:res.data
+        })
       }
     })
     wx.request({
-      url: 'localhost:8000/myAnswer',
+      url: app.baseUrl+'/myAnswer',
       success(res) {
-        this.myAnswer = res
+        e.setData({
+          myAnswer:res.data
+        })
       }
     })
   }

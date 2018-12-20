@@ -68,7 +68,7 @@ Page({
   },
 
   loginBtnClick:function(){
-      app.appData.userinfo={answer:}
+      app.appData.userinfo={answer}
   },
 
   answerInput:function(event){
