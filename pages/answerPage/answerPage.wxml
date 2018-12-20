@@ -1,0 +1,27 @@
+<!--question.wxml-->
+
+    <view class="question-wrp">
+        <view class="question-item">
+            <view class="que-title">
+                问题
+            </view>
+            <view class="que-content">
+                问题描述
+            </view>
+            <view class="que-follow">
+                <view class="right">
+                    关注
+                </view>
+            </view>
+        </view>
+        <view class="que-operate flex-wrp">
+            <view class="invite flex-item">
+                <image ></image>
+                <text>邀请回答</text>
+            </view>
+            <view class="write flex-item">
+                <image ></image>
+                <text>写回答</text>
+            </view>
+        </view>
+    </view>
