@@ -1,5 +1,3 @@
-var util = require('../../utils/util.js')
-
 Page({
   data: {
     describ: 'Hello World',
@@ -7,29 +5,24 @@ Page({
   },
 
   onLoad: function () {
-    var that=this
+    var that = this
   },
-  onShow:function(){
+  onShow: function () {
     var that = this
     this.getUserInfo()
-    this.goToblackList()
+
 
   },
-  
-  goToblackList(){
-    wx.navigateTo({
-      url:'/pages/blackList'
-    })
-  },
-  getUserInfo(){
+
+
+  getUserInfo() {
     wx.request({
-      url:'localhost:8000/get/object=?entity=user',
-      success:(res)=>{
+      url: 'localhost:8000/user',
+      success(res) {
         console.log("successfully getdata!")
-        this.data=res
+        this.user = res
 
       },
     })
   },
 })
-

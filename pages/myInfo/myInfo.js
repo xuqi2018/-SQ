@@ -1,5 +1,3 @@
-var util = require('../../utils/util.js')
-var app = getApp()
 Page({
   data: {
     describ: 'Hello World',
@@ -7,15 +5,24 @@ Page({
   },
 
   onLoad: function () {
-    console.log('onLoad')
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+  },
+  onShow: function () {
+    var that = this
+    this.getUserInfo()
+
+
+  },
+
+
+  getUserInfo() {
+    wx.request({
+      url: 'localhost:8000/user',
+      success(res) {
+        console.log("successfully getdata!")
+        this.user = res
+
+      },
     })
   },
 })
-

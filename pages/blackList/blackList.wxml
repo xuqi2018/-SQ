@@ -1,7 +1,16 @@
- <view>
-    <block wx:for="{{blocked_users}}" wx:for-item="blocked_user" wx:key="uid">
-        <view>{{uid}}:{{blocked_user}}</view>
-    </block>
-    <navigator class="userInfo-link" url="/pages/userInfo/userInfo?">跳转</navigator>
-    
+ display:flex
+<view class="top-tab flex-wrp flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{"屏蔽的用户"}}
+  </view>
 </view>
+<scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
+    <block wx:for="{{blocked_users}}" wx:for-index="idx" wx:for-item="blocked_user" data-idx="{{idx}}">
+ 
+     <view class="user-container"></view>
+       <view class="uid">{{blocked_user.uid}}:{{blocked_user.blocked_user}}</view>
+     
+    </block>
+  </view>
+</scroll-view>
