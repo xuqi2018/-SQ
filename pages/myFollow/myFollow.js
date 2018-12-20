@@ -1,65 +1,64 @@
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    navTab: ["用户", "提问","回答"],
+    currentNavtab: "0",
+    followedUser: [{
+      "uid": "12345",
+      "nickName": "Jack",
+      "followTime": "2017-01-01"}],
+    followedQuestion: [{
+      "nickName": "Jack",
+      "questionId": "Q003",
+      "questionTitle": "如何当好java工程师？",
+      "questionContent": "java是全世界最好的语言，所以我们应当如何当好一名java工程师呢？",
+      "answerNum": "16",
+      "followTime": "2017-06-07"}],
+    followedAnswer: [{
+      "nickName": "Jack",
+      "questionId": "Q001",
+      "answerId": "A004",
+      "questionTitle": "如何使用微信小程序开发平台？",
+      "answerContent": "多看，多学，多练",
+      "reviewNum": "255",
+      "followTime": "2018-11-15"}]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.getData(this)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  switchTab: function (e) {
+    this.setData({
+      currentNavtab: e.currentTarget.dataset.idx
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getData:function(e){
+    wx.request({
+      url: app.baseUrl+'/followedUser',
+      success(res){
+        e.setData({
+          followedUser: res.data
+        })
+        //this.followedUser=res
+      }
+    })
+    wx.request({
+      url: app.baseUrl +'/followedQuestion',
+      success(res) {
+        e.setData({
+          followedQuestion: res.data
+        })
+        //this.followedQuestion = res
+      }
+    })
+    wx.request({
+      url: app.baseUrl +'/followedAnswer',
+      success(res) {
+        e.setData({
+          followedAnswer:res.data
+        })
+        //this.followedAnswer = res
+      }
+    })
   }
 })

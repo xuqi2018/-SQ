@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/answerPage/answerPage",
@@ -12,16 +12,17 @@
     "pages/myQandA/myQandA",
     "pages/questionPage/questionPage",
     "pages/reviewPage/reviewPage",
-    "pages/userInfo/userInfo"
+    "pages/userInfo/userInfo",
+    "pages/answer/answer"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "position":"bottom",
+    "position": "bottom",
     "color": "#626567",
     "selectedColor": "#2A8CE5",
     "backgroundColor": "#FBFBFB",
@@ -59,5 +60,4 @@
       }
     ]
   }
-  
 }

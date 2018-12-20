@@ -4,62 +4,40 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navTab: ["黑名单"],
+    currentNavtab: "0",
+    blocked_users: [//{
+      //"uid": "1",
+      //"blocked_user": "lisi"
+    //},
+    //{
+      //"uid": "2",
+      //"blocked_user": "xiaoming"
+    //}
+    ],
+
+  }, onLoad: function () {
+    this.getData(this)
+    //this.getData();
+
+  },
+  switchTab: function (e) {
+    this.setData({
+      currentNavtab: e.currentTarget.dataset.idx
+    });
+  },
+  getData: function (e) {
+    wx.request({
+      url: 'http://172.19.147.177:80/object?entity=user&id=3',
+      success(res) {
+        console.log(res),
+        e.setData({
+          blocked_users:res.data.body.blocked_users
+        })
+        //this.user = res
+      },
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

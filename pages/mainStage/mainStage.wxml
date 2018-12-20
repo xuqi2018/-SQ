@@ -1,30 +1,38 @@
 <!--mainStage.wxml-->
-<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="" scroll-top="}">
-  <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+<scroll-view class="container" scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="" scroll-top="}">
+  <view class="search flex-wrp">
+      <view class="search-left flex-item">
+          <input placeholder="搜索话题, 问题或人" placeholder-class="search-placeholder"/>
+      </view>
+      <view class="search-right flex-item">
+        <view class="askQuestion-container">
+          <navigator url="../askQuestion/askQuestion">我要提问！</navigator>
+        </view>
+      </view>
+  </view>
+  <block wx:for="{{answerList}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">
     <view class="feed-item">
       <view class="feed-source">
         <a class="">
-          <text>{{item.feed_source_name}}{{item.feed_source_txt}}</text>
+          <text>来自 {{answer.nickName}} 的回答</text>
         </a>
       </view>
       <view class="feed-content">
-        <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
-          <a class="question-link">
-            <text>{{item.question}}</text>
-          </a>
+        <view class="question" qid="{{answer.questionId}}">
+          <navigator class="question-link" url="../questionPage/questionPage?qid={{answer.questionId}}">
+            <text>{{answer.questionTitle}}</text>
+          </navigator>
         </view>
         <view class="answer">
           <view class="answer-body">
-            <view bindtap="bindItemTap">
-              <text class="answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
-            </view>
+            <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+              <text class="answer-text" aid="{{answer.answerId}}">{{answer.answerContent}}</text>
+            </navigator>
           </view>
-          <view class="answer-actions" bindtap="bindItemTap">
+          <view class="answer-actions">
             <view class="comments dot">
-              <a>{{item.comment_num}} 评论 </a>
-            </view>
-            <view class="follow-it">
-              <a>关注问题</a>
+              <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+                {{answer.reviewNum}} 评论 </navigator>
             </view>
           </view>
         </view>

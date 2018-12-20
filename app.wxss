@@ -1,5 +1,5 @@
 /**app.wxss**/
-.container {
+.container{
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,3 +8,139 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.top-tab{
+  width: 750rpx;
+  height: 100rpx;
+  background: rgb(252, 253, 253);
+  color: rgb(0, 5, 8);
+  font-size: 28rpx;
+  line-height: 100rpx;
+  margin: 0 0 8rpx 0;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+.flex-tab {
+justify-content:space-around;
+align-items:stretch;
+}
+.flex-wrp {
+  display:flex;
+}
+.container .feed-item{
+  width: 690rpx;
+  padding: 30rpx 30rpx 20rpx;
+  margin: 7rpx 0 6rpx 0;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
+}
+.container .feed-item .feed-source{
+  width: 690rpx;
+  left: 0;
+  height: 50rpx;
+}
+.container .feed-item .feed-source .avatar{
+  position: relative;
+  display: inline-block;
+}
+.container .feed-item .feed-source a{
+  display: inline-block;
+  height: 40rpx;
+}
+.container .feed-item .feed-source .avatar image{
+  /*position: absolute;*/
+  display: inline-block;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 45rpx;
+  top: 10rpx;
+  vertical-align: middle;
+}
+.container .feed-item .feed-source text{
+  /*position: absolute;*/
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  vertical-align: middle;
+  margin: 0 0 0 15rpx;
+  color: #a0acac;
+  font-size: 26rpx;
+}
+.container .feed-item .feed-source .item-more{
+  display: inline-block;
+  width: 40rpx;
+  height: 45rpx;
+  float: right;
+}
+.container .feed-item .feed-content{
+  padding: 10rpx 0 0 0;
+}
+.container .feed-item .feed-content .question text{
+  font-size: 28rpx;
+  font-weight: 600px;
+  line-height: 40rpx;
+  text-space: 5rpx;
+}
+.container .feed-item .feed-content .answer-body{
+  padding: 10rpx 0 0 0;
+  /*height: 10rpx;*/
+  font-size: 24rpx;
+  line-height: 28rpx;
+  color: #5b5b5b;
+}
+.container .feed-item .feed-content .answer-actions{
+  width: 690rpx;
+  padding: 10rpx 0  0;
+  color: #a0acac;
+}
+.container .feed-item .feed-content .answer-actions view{
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding: 0 10rpx 0 0;
+  font-size: 24rpx;
+}
+.container .search{
+  width: 735rpx;
+  height: 65rpx;
+  padding: 12.5rpx 0 12.5rpx 15rpx;
+  background: rgb(154, 155, 156);
+}
+.container .search-left{
+  flex: 7;
+  background: rgb(246, 247, 248);
+  text-align: left;
+}
+.container .search-left input{
+  display: inline-block;
+  height: 65rpx;
+  font-size: 26rpx;
+}
+.search-placeholder{
+  color: rgb(0, 6, 10);
+  line-height: 20rpx;
+}
+
+.container .search .search-right{
+  flex: 2;
+}
+.container .search .search-right .askQuestion-container{
+  width: 140rpx;
+  padding: 0rpx 30rpx 0rpx;
+  margin: 7rpx 0 6rpx 0;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
+}
+.container .search .search-right .askQuestion-container navigator{
+  font-size: 24rpx;
+  font-weight: 600px;
+  line-height: 50rpx;
+  text-space: 5rpx;
+}
+
+
+

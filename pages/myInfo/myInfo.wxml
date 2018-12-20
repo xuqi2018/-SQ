@@ -1,14 +1,13 @@
 <view class="detail-view">
 	<view class="avatar-view">
-		<image class="avatar" mode="widthFix" src="{{ user.avatar_url }}"/>
+		<image class="avatar" mode="widthFix" src="{{userInfo.avatarUrl}}"/>
 	</view>
 	<view class="basic">
-		<text class="nickname">{{ user.nickname }}</text>
-		<text class="email">{{ user.email || "" }}</text>
-  </view>
-	<view class="describ">
-		<text class="title">Profile</text>
-		<text class="describ-detail">  On SQ since <text class="highlight">{{ user.year }}</text>, {{ user.nickname }} is a developer based in {{ user.location }} with  <text class="highlight">{{ user.followers }}</text> followers.
-		</text>
+		<text class="name">{{userInfo.nickname}}</text>
 	</view>
+	<view class="profile">
+		<text class="title">个性签名</text>
+	<text class="profile-detail" >{{userInfo.describe}}</text>
+	</view>
+  <navigator class="blackList-link" url="/pages/blackList/blackList?">黑名单</navigator>
 </view>

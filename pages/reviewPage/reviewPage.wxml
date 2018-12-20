@@ -1,0 +1,6 @@
+<view class="pro-con">
+ <form bindsubmit="reg">
+    <view>评论内容：<input type="text" name="content"></input></view>
+  </form>
+  <button class="submit" data-rid="{{item.rid}}" data-reviewer="{{item.userName}}" bindtap="bindReply">提交</button>
+</view>

@@ -25,6 +25,7 @@ Page({
           },
           method: 'post',
           success: function(res){
+            console.log(res)
             wx.showToast({
               title: res.data.status.toString(),
               icon: 'success',

@@ -1,3 +1,4 @@
+
 /* pages/askQuestion/askQuestion.wxss */
 .que-title{
     padding: 40rpx 20rpx 30rpx;
@@ -189,3 +190,4 @@
 /*.answer-feed .feed-item .feed-content .answer-actions .dot ::after{*/
     /*content: "•";*/
 /*}*/
+
