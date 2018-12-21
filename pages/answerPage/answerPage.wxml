@@ -1,7 +1,27 @@
-<view class="container">
-  <block wx:for="{{list}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">    
-    <view calss="answerer"><text>回答者：{{answer.answerer}}</text></view>
-    <view class="answer-content"><text>回答：{{answer.content}}</text></view> 
-    <navigator class="review-link" url="../reviewPage/reviewPage?answer={{answer.aid}}"><button>评论</button></navigator>
-  </block>
-</view>
+
+    <view class="question-wrp">
+        <view class="question-item">
+            <view class="que-title">
+                问题
+            </view>
+            <view class="que-content">
+                问题描述
+            </view>
+            <view class="que-follow">
+                <view class="right">
+                    关注
+                </view>
+            </view>
+        </view>
+        <view class="que-operate flex-wrp">
+            <view class="invite flex-item">
+                <image ></image>
+                <text>邀请回答</text>
+            </view>
+            <view class="write flex-item">
+                <image ></image>
+                <text>写回答</text>
+            </view>
+        </view>
+    </view>
+
