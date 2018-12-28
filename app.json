@@ -30,33 +30,24 @@
     "list": [
       {
         "pagePath": "pages/mainStage/mainStage",
-        "text": "首页",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "首页"
       },
       {
         "pagePath": "pages/message/message",
-        "text": "动态",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "动态"
       },
       {
         "pagePath": "pages/myQandA/myQandA",
-        "text": "我的问答",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "我的问答"
       },
       {
         "pagePath": "pages/myFollow/myFollow",
-        "text": "我的关注",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "我的关注"
       },
       {
         "pagePath": "pages/myInfo/myInfo",
-        "text": "个人资料",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "个人资料"
+
       }
     ]
   }

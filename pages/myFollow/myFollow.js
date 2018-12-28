@@ -6,17 +6,17 @@ Page({
     currentNavtab: "0",
     followedUser: [{
       "uid": "12345",
-      "nickName": "Jack",
+      "nickname": "Jack",
       "followTime": "2017-01-01"}],
     followedQuestion: [{
-      "nickName": "Jack",
+      "nickname": "Jack",
       "questionId": "Q003",
       "questionTitle": "如何当好java工程师？",
       "questionContent": "java是全世界最好的语言，所以我们应当如何当好一名java工程师呢？",
       "answerNum": "16",
       "followTime": "2017-06-07"}],
     followedAnswer: [{
-      "nickName": "Jack",
+      "nickname": "Jack",
       "questionId": "Q001",
       "answerId": "A004",
       "questionTitle": "如何使用微信小程序开发平台？",

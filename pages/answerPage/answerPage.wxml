@@ -1,7 +1,32 @@
+<!--answer.wxml-->
 <view class="container">
-<block wx:for="{{list}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}">    
-    <view calss="answerer"><text>回答者：{{answer.answerer}}</text></view>
-    <view class="answer-content"><text>回答：{{answer.content}}</text></view>
-       <navigator class="review-link" url="../reviewPage/reviewPage?answer={{answer.aid}}"><button>评论</button></navigator>
-  </block>
-  </view> 
+    <view class="question" bindtap="toQuestion">
+        <text class="question-title">{{question_title}}</text>
+    </view>
+    <view class="answerer-wrp">
+        <view class="bg-half"></view>
+        <view class="answerer flex-wrp">
+            <view class="answerer-info flex-item">
+                <view class="answerer-name"><navigator url="../userInfo/userInfo?uid={{answer.answerer}}">
+                {{answerer_name}}</navigator></view>
+                <view class="answerer-des"></view>
+            </view>
+            <view class="follow flex-item" bindtap="follow_answer">
+                <view>关注该回答</view>
+            </view>
+        </view>
+    </view>
+    <view class="answer-content">
+        <text>{{answer.content}}</text>
+    </view>
+    <view class="answer-footer flex-wrp">
+        <view class="operation-wrp flex-item">
+            <view class="operation flex-wrp flex-tab">
+                <view class="operation-btn flex-item" bindtap="toReview">
+                    <text>{{reviewNum}} 评论</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+

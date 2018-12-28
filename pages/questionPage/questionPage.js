@@ -1,65 +1,54 @@
+const app=getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    qid:"",
+    question:{
+      title: "我为什么这么菜",
+      content: "",
+      asker: "",
+      is_anonynous: false,
+      is_closed: false
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that=this
+    wx.request({
+      url: app.baseUrl+'/object?entity=question&id='+options.qid,
+      method:"GET",
+      success(res){
+        //console.log(res)
+        that.setData({
+          qid:options.qid,
+          question:res.data.body
+        })
+      }
+    })
+    //console.log(that.data)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  followQuestion:function(){
+    wx.request({
+      url: app.baseUrl+'/question',
+      method:"POST",
+      data:{
+        action:"follow_question",
+        body:{
+          qid:this.data.qid
+        }
+      },
+      success(res){
+        wx.showToast({
+          title: res.data.status.toString(),
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })
   }
 })

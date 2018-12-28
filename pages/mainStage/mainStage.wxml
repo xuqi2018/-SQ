@@ -25,13 +25,13 @@
         </view>
         <view class="answer">
           <view class="answer-body">
-            <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+            <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
               <text class="answer-text" aid="{{answer.answerId}}">{{answer.answerContent}}</text>
             </navigator>
           </view>
           <view class="answer-actions">
             <view class="comments dot">
-              <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+              <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
                 {{answer.reviewNum}} 评论 </navigator>
             </view>
           </view>

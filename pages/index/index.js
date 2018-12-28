@@ -31,11 +31,16 @@ Page({
               icon: 'success',
               duration: 2000
             })
+            wx.switchTab({
+              url: '../mainStage/mainStage',
+            })
           }
         })
       }, 
       fail: function(res) {},
-      complete: function (res) {},
+      complete: function (res) {
+        
+      }
     })
   },
 

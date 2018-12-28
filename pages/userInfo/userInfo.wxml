@@ -12,5 +12,6 @@
   <text class="question_num-detail">{{"2"}}</text> 
   <text class="answer_num">回答数</text>
   <text class="answer_num-detail">{{8}}</text>
+  <view class="follow" bindtap="follow_user">关注该用户</view>
   </view>
 </view>

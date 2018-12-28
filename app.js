@@ -2,7 +2,7 @@
 import './vendor/weapp-cookie/dist/weapp-cookie';
 import cookies from './vendor/weapp-cookie/dist/weapp-cookie';
 App({
-  baseUrl: 'http://172.19.147.177:80',
+  baseUrl: 'http://192.168.1.110:80',
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

@@ -19,12 +19,12 @@
     <block wx:for="{{myAnswer}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}" >
       <view class="answer-container">
         <view class="answer-title">
-          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
             {{answer.questionTitle}}
           </navigator>
         </view>
         <view class="answer-content">
-          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}">
+          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
             {{answer.answerContent}}
           </navigator>
         </view>

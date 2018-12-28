@@ -8,7 +8,6 @@ Page({
   },
 
   onLoad: function (option){
-    
     //var that = this
     this.getData(this);
   },
