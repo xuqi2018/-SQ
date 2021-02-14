@@ -1,0 +1,9 @@
+<view class="question-item">
+  <view class="que_title">
+    问题标题：<input bindinput="answerInput"></input>
+  </view>
+  <view class="que_content">
+    问题详述：<input bindinput="answerDescriptionInput"></input>
+  </view>
+  <button style="margin-left: 15rpx; margin-right: 15rpx; margin-top: 50rpx; border-radius: 40rpx" type="primary" bindtap="listenerLogin">确定</button>
+</view>

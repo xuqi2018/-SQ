@@ -1,35 +1,40 @@
-var util = require('../../utils/util.js')
-
+const app=getApp()
 Page({
   data: {
+    uid:"",
     describ: 'Hello World',
     userInfo: {}
   },
-
-  onLoad: function () {
-    var that=this
-  },
-  onShow:function(){
-    var that = this
-    this.getUserInfo()
-    this.goToblackList()
-
-  },
-  
-  goToblackList(){
-    wx.navigateTo({
-      url:'/pages/blackList'
+  onLoad: function (option) {
+    this.setData({
+      uid:option.uid
     })
+    this.getData(this)
   },
-  getUserInfo(){
+  getData:function(e) {
     wx.request({
-      url:'localhost:8000/get/object=?entity=user',
-      success:(res)=>{
-        console.log("successfully getdata!")
-        this.data=res
-
+      url: app.baseUrl+'/object?entity=user&id='+e.data.uid,
+      method:"get",
+      success(res) {
+        e.setData({
+          userInfo: res.data.body
+        })
       },
     })
   },
+  follow_user: function(){
+    wx.request({
+      url: app.baseUrl+'/user',
+      method:"POST",
+      data:{
+        action:"follow_user",
+        body:{
+          uid:this.data.uid
+        }
+      },
+      success(res){
+        console.log("follow user success")
+      }
+    })
+  }
 })
-

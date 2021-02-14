@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    qid:[],
+    list:[]
   },
 
   /**
@@ -39,6 +40,17 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    var that=this;
+    wx.request({
+      url: '',
+      method: 'get',
+      success(res) {
+        console.log("get id")
+        this.setData({
+          qid: res.data.qid
+        })
+      }
+    })
 
   },
 
@@ -61,5 +73,19 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  formSubmit:function(e){
+    var that=this;
+    wx.request({
+      url: app.baseUrl + '/AddAnswer',
+      method: 'POST',
+      success(res) {
+        console.log("successfully postdata!")
+        data({
+          qid:qid,
+          content:e.detail.value.content
+        })
+    }
+    })
   }
 })

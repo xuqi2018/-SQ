@@ -25,23 +25,28 @@ Page({
           },
           method: 'post',
           success: function(res){
+            console.log(res)
             wx.showToast({
               title: res.data.status.toString(),
               icon: 'success',
               duration: 2000
             })
+            wx.switchTab({
+              url: '../mainStage/mainStage',
+            })
           }
         })
       }, 
       fail: function(res) {},
-      complete: function (res) {},
+      complete: function (res) {
+        
+      }
     })
   },
 
   toMainStage: function(e){
-    //console.log(getCurrentPages()[0].route)
-    wx.navigateTo({
-      url:'../mainStage/mainStage'
+    wx.switchTab({
+      url: '../mainStage/mainStage',
     })
   }
 })

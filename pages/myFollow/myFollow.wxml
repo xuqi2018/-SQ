@@ -1,0 +1,51 @@
+<view class="top-tab flex-wrp flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}}
+  </view>
+</view>
+<scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
+    <block wx:for="{{followedUser}}" wx:for-index="idx" wx:for-item="user" data-idx="{{idx}}" >
+      <view class="user-container">
+        <navigator class="user-link" url="../userInfo/userInfo?uid={{user.uid}}">{{user.nickName}}</navigator>
+      </view>
+    </block>
+  </view>
+  <view class="ctnt1" hidden="{{currentNavtab==1 ? '' : true}}">
+    <block wx:for="{{followedQuestion}}" wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}" >
+      <view class="question-container">
+        <view class="question-asker">
+          <navigator class="question-link" url="../questionPage/questionPage?qid={{question.questionId}}">
+            来自 {{question.nickName}} 的提问
+          </navigator>
+        </view>
+        <view class="question-content">
+          <navigator class="question-link" url="../questionPage/questionPage?qid={{question.questionId}}">
+            {{question.questionTitle}}
+          </navigator>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="ctnt2" hidden="{{currentNavtab==2 ? '' : true}}">
+    <block wx:for="{{followedAnswer}}" wx:for-index="idx" wx:for-item="answer" data-idx="{{idx}}" >
+     <view class="answer-container">
+        <view class="answerer">
+          <navigator class="question-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
+            来自 {{answer.nickName}} 的回答
+          </navigator>
+        </view>
+        <view class="question">
+          <navigator class="question-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
+            {{answer.questionTitle}}
+          </navigator>
+        </view>
+        <view class="answer-content">
+          <navigator class="answer-link" url="../answerPage/answerPage?aid={{answer.answerId}}&question_title={{answer.questionTitle}}&answerer_name={{answer.nickName}}">
+            {{answer.answerContent}}
+          </navigator>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

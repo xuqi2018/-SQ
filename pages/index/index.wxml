@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container">
   <view class="container">
-    <button bindtap="login">login</button>
+    <button bindtap="login">授权并登录</button>
   </view>
   <view>
-    <button wx:if="{hasUserInfo}" opne-type="toMainStage" bindtap="toMainStage">页面跳转</button>
+    <button wx:if="{hasUserInfo}" opne-type="toMainStage" bindtap="toMainStage">游客登录</button>
   </view>
 </view>

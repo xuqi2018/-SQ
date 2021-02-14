@@ -1,0 +1,25 @@
+<!--question.wxml-->
+    <view class="question-wrp">
+        <view class="question-item">
+            <view class="que-title">
+                {{question.title}}
+            </view>
+            <view class="que-content">
+                {{question.content}}
+            </view>
+            <view class="que-follow">
+                <button class="follow" bindtap="followQuestion">
+                    关注该问题
+                </button>
+            </view>
+        </view>
+        <view class="que-operate">
+            <view class="invite">
+                <text>邀请回答</text>
+            </view>
+            <view class="answer">
+                <navigator url="../answer/answer?aid={{qid}}">写回答</navigator>
+            </view>
+        </view>
+    </view>
+   

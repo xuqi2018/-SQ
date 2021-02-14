@@ -1,0 +1,7 @@
+<view class="pro-con">
+ <form bindsubmit="reg">
+    <view>添加内容：<input type="text" name="answer_content"></input></view>
+  </form>
+  <button class="submit" data-aid="{{item.aid}}" data-answerer="{{item.userName}}" bindtap="bindReply">提交</button>
+</view>
+
